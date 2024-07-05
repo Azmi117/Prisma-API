@@ -6,7 +6,7 @@ class UserService{
     }
 
     async getUserById(id){
-        return prisma.user.findUnique(id);
+        return prisma.user.findUnique({where: {id: Number(id) } });
     }
 
     async createUser(username, email, password){
