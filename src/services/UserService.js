@@ -9,16 +9,16 @@ class UserService{
         return prisma.user.findUnique({where: {id: Number(id) } });
     }
 
-    async createUser(username, email, password){
+    async createUser(username, email, password, role){
         return prisma.user.create({
-            data:{username, email, password}
+            data:{username, email, password, role}
         });
     }
 
-    async updateUser(id, username, email, password){
+    async updateUser(id, username, email, password, role){
         return prisma.user.update({
             where:{id: Number(id)},
-            data: {username, email, password}
+            data: {username, email, password, role}
         });
     }
 

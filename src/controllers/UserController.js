@@ -28,8 +28,8 @@ class UserController{
 
     async createUser(req, res, next){
         try{
-            const { username, email, password } = req.body;
-            const user = await UserService.createUser(username, email, password);
+            const { username, email, password, role } = req.body;
+            const user = await UserService.createUser(username, email, password, role);
             res.status(201).json(user);
         }catch(err){
             next(err);
@@ -42,8 +42,8 @@ class UserController{
             if(!id){
                 return res.status(400).json({message: 'Id required'});
             }
-            const { username, email, password } = req.body;
-            const user = await UserService.updateUser(id, username, email, password);
+            const { username, email, password, role } = req.body;
+            const user = await UserService.updateUser(id, username, email, password, role);
             res.status(201).json(user);
         }catch(err){
             next(err);
